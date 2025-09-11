@@ -1,0 +1,51 @@
+.button {
+  width: 400px;
+  height: 63px;
+  background: $btn;
+  border-radius: 8px;
+  @include df;
+  gap: 30px;
+  border: none;
+  font-size: 18px;
+  color: $light;
+  font-weight: 600;
+  transition: all 0.3s ease; // ✨ animatsiya qo‘shildi
+
+  &:hover {
+    cursor: pointer;
+    background: darken($btn, 10%); // hoverda biroz to‘qroq rang
+    box-shadow: 0 0 8px rgba(226, 228, 230, 0.6);
+  }
+
+  &:active {
+    transform: scale(0.95); // bosilganda kichrayadi (bosilgandek effekt)
+  }
+}
+
+/* 📱 Responsiv media */
+@media (max-width: 1024px) {
+  .button {
+    width: 320px;
+    height: 55px;
+    font-size: 16px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .button {
+    width: 260px;
+    height: 50px;
+    font-size: 15px;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    width: 200px;
+    height: 45px;
+    font-size: 14px;
+    gap: 10px;
+  }
+}
