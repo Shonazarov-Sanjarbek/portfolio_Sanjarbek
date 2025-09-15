@@ -1,16 +1,10 @@
 import React from "react";
 import "./_footer.scss";
-import {
-  FaTelegramPlane,
-  FaGithub,
-  FaLinkedin,
-  FaInstagram,
-} from "react-icons/fa";
 
 function Footer({ logoText, description, socials = [] }) {
   return (
-      <footer className="footer">
-        <div className="container">
+    <footer className="footer">
+      <div className="container">
         <div className="footer__wrapper">
           {/* Left */}
           <div className="footer__left">
@@ -37,9 +31,8 @@ function Footer({ logoText, description, socials = [] }) {
         <div className="footer__bottom">
           <p>© {new Date().getFullYear()} All rights reserved.</p>
         </div>
-
-        </div>
-      </footer>
+      </div>
+    </footer>
   );
 }
 

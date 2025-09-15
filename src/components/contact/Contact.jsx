@@ -1,16 +1,31 @@
 import React from "react";
 import { FaTelegramPlane, FaInstagram, FaPhoneAlt } from "react-icons/fa";
+import Button from "../button/Button"; // mavjud bo‘lsa
 
 function Contact() {
   return (
     <div className="container">
       <section className="contact">
-        <div className="contact__content">
-          <h2 className="contact__title">
+        {/* Left Side - Hero */}
+        <div className="contact__left">
+          <p className="contact__subtitle">
+            Hello, I am <span className="highlight">Sanjarbek</span>, a web
+            developer living in City.
+          </p>
+          <p className="contact__title">
+            I help businesses and companies achieve their goals by designing
+            user-centric digital products and interactive experiences. If you
+            would like to contact me, you can click the button below.
+          </p>
+        </div>
+
+        {/* Right Side - Contact Info */}
+        <div className="contact__right contact__content">
+          <h2 className="contact__heading">
             <span className="text-gradient">Contact Me</span>
             <span className="icon">🚀</span>
           </h2>
-          <p className="contact__subtitle">
+          <p className="contact__mini-sub">
             Menga istalgan vaqtda bemalol yozishingiz mumkin 👇
           </p>
 
@@ -35,12 +50,9 @@ function Contact() {
               Instagram
             </a>
 
-            <a
-              href="tel:+998998747747"
-              className="contact__btn phone"
-            >
+            <a href="tel:+998970058747" className="contact__btn phone">
               <FaPhoneAlt className="contact__icon" />
-              +998 99 874 77 47
+              +998 97 005 87 47
             </a>
           </div>
         </div>

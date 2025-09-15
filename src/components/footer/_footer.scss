@@ -1,10 +1,12 @@
+@import "../../sass/variable";
+
 .footer {
     width: 100%;
-    background: #323232;
-    color: #fff;
+    background: $third-back;
+    color: $light;
     padding: 20px 0;
     text-align: center;
-    backdrop-filter: blur(6px);
+    // backdrop-filter: blur(6px);
     
 
     &__wrapper {
@@ -37,8 +39,8 @@
 
         .footer__social {
             font-size: 22px;
-            color: #fff;
-            transition: 0.3s ease;
+            color: $light;
+            // transition: 0.3s ease;
 
             &:hover {
                 color: #00bcd4;

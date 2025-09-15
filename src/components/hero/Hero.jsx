@@ -1,19 +1,15 @@
 import React from "react";
-import Button from "../button/Button";
+import hero from "../../assets/hero.png";
 
 function Hero() {
   return (
-    <div className="container">
-      <div className="hero">
-        <p className="hero__subtitle">
-          Hello, I am Sanjarbek A web developer living in City.
+    <div className="hero" style={{ backgroundImage: `url(${hero})` }}>
+      <div className="overlay"></div> {/* qora yarim shaffof qatlam */}
+      <div className="hero__content">
+        <h1>Hello, I'm Sanjarbek 👋</h1>
+        <p>
+          Frontend Developer | Creator of modern and responsive web applications
         </p>
-        <p className="hero__title">
-          I help businesses and companies achieve their goals by designing
-          user-centric digital products and interactive experiences. If you
-          would like to contact me, you can click the button below.
-        </p>
-          <Button />
       </div>
     </div>
   );
