@@ -2,7 +2,6 @@
   @include df(space-between, center);
   gap: 30px;
   color: $light;
-  background: $main-back; // #1e1160
   padding: 60px 20px;
 
   @media (max-width: 992px) {
