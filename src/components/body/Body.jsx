@@ -7,7 +7,7 @@ import Contact from "../contact/Contact";
 
 function Body() {
   return (
-    <body className="body">
+    <div className="body">
       <section id="hero" className="section">
         <Hero />
       </section>
@@ -23,7 +23,7 @@ function Body() {
       <section id="contact" className="section">
         <Contact />
       </section>
-    </body>
+    </div>
   );
 }
 

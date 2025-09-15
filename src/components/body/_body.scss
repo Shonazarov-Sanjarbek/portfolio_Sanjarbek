@@ -1,58 +1,11 @@
-body {
+.body {
   width: 100%;
-  min-height: 100vh;
-  background: #1e1160; // $main-back
-  overflow-x: hidden;
+  height: 100%;
+  background: $main-back; // asosiy fon
+  overflow: hidden;
   position: relative;
-  font-family: 'Poppins', sans-serif;
-  z-index: 0; // asosiy qatlam
+  color: $light;
 }
-
-/* To‘lqinli fon animatsiyasi */
-body::before {
-  content: "";
-  position: fixed; // fixed qilsak scroll qilganda ham joyida qoladi
-  inset: 0;
-  background: radial-gradient(circle at 20% 30%, #61dbfb33 0%, transparent 40%),
-              radial-gradient(circle at 80% 70%, #f39c1233 0%, transparent 40%),
-              radial-gradient(circle at 50% 50%, #ffffff22 0%, transparent 35%);
-  animation: moveBg 25s ease-in-out infinite alternate;
-  z-index: -2; // fon qatlamida
-  pointer-events: none;
-}
-
-/* Kichkina “particle” nuqtalar */
-body::after {
-  content: "";
-  position: fixed; // fixed -> sahifa bo‘ylab harakat qiladi, lekin kontentni yopmaydi
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  background: radial-gradient(circle 6px, #61dbfb 80%, transparent 100%) 20% 20%,
-              radial-gradient(circle 5px, #f39c12 80%, transparent 100%) 70% 40%,
-              radial-gradient(circle 8px, #ffffff55 80%, transparent 100%) 40% 80%,
-              radial-gradient(circle 4px, #ff0055aa 80%, transparent 100%) 80% 70%,
-              radial-gradient(circle 6px, #00ffccaa 80%, transparent 100%) 30% 60%;
-  background-size: 200px 200px;
-  animation: floatShapes 60s linear infinite;
-  opacity: 0.25;
-  z-index: -2; // faqat fon
-  pointer-events: none;
-}
-
-@keyframes moveBg {
-  0%   { transform: scale(1) translate(0, 0); }
-  50%  { transform: scale(1.1) translate(5%, -5%); }
-  100% { transform: scale(1) translate(0, 0); }
-}
-
-@keyframes floatShapes {
-  0%   { transform: translateY(0) translateX(0); }
-  50%  { transform: translateY(-10%) translateX(5%); }
-  100% { transform: translateY(0) translateX(0); }
-}
-
 
 .section {
   min-height: 100vh; // to‘liq ekran
