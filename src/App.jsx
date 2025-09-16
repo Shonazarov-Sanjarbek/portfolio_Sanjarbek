@@ -5,7 +5,6 @@ import Footer from "./components/footer/Footer";
 import {
   FaTelegramPlane,
   FaGithub,
-  FaLinkedin,
   FaInstagram,
 } from "react-icons/fa";
 

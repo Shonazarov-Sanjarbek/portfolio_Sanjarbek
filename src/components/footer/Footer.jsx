@@ -1,5 +1,3 @@
-import React from "react";
-import "./_footer.scss";
 
 function Footer({ logoText, description, socials = [] }) {
   return (
