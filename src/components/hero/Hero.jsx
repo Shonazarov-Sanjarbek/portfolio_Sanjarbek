@@ -1,9 +1,9 @@
 import React from "react";
-import hero from "../../assets/hero.png";
+// import hero from "../../assets/hero.png";
 
 function Hero() {
   return (
-    <div className="hero" style={{ backgroundImage: `url(${hero})` }}>
+    <div className="hero" >
       <div className="overlay"></div> {/* qora yarim shaffof qatlam */}
       <div className="hero__content">
         <h1>Hello, I'm Sanjarbek 👋</h1>
