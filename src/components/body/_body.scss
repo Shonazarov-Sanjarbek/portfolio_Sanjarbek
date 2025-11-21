@@ -1,16 +1,31 @@
 .body {
   width: 100%;
-  height: 100%;
-  background: $main-back; // asosiy fon
+  min-height: 100vh;
   overflow: hidden;
   position: relative;
   color: $light;
-}
 
-.section {
-  min-height: 100vh; // to‘liq ekran
-  @include df;
-  font-size: 48px;
-  font-weight: bold;
-  color: $light;
+  .background-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: block;
+    background: $main-back;
+  }
+
+  .section {
+    min-height: 100vh; // to‘liq ekran
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    font-weight: bold;
+    color: $light;
+    position: relative;
+    z-index: 1; // canvas ustida turishi uchun
+  }
 }

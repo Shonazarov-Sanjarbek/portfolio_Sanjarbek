@@ -2,11 +2,10 @@
 
 .footer {
     width: 100%;
-    background: $third-back;
+    background: rgba(42, 45, 189, 0.6352941176);
     color: $light;
     padding: 20px 0;
     text-align: center;
-    // backdrop-filter: blur(6px);
     
 
     &__wrapper {
