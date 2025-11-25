@@ -3,14 +3,14 @@ import bottom from "../../assets/bottom.svg";
 import nest from "../../assets/nest.png";
 import diceGames from "../../assets/dice-game.png";
 import webpack from "../../assets/webpack.png";
-import mohid from "../../assets/mohid.png";
+import cart from "../../assets/internet magazin.png";
 
 function Works() {
   const cards = [
     { img: nest, link: " https://nestsanjarbek.vercel.app/", alt: "NestJS" },
     { img: diceGames, link: "https://dicegame-sanjarbek.vercel.app/", alt: "Dice Game" },
     { img: webpack, link: "https://webpack-sanjarbek.vercel.app/", alt: "Webpack" },
-    { img: mohid, link: "https://mohid-apisanjarbek.vercel.app/", alt: "Mohid" },
+    { img: cart, link: "https://internet-magazin-pi.vercel.app/", alt: "Cart" },
   ];
   return (
     <div className="container">
