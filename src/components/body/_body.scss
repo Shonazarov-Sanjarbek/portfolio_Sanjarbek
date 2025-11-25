@@ -18,10 +18,7 @@
 
   .section {
     min-height: 100vh; // to‘liq ekran
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include dfc();
     font-size: 48px;
     font-weight: bold;
     color: $light;

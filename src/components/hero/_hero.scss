@@ -33,6 +33,22 @@
       font-weight: 700;
       margin-bottom: 20px;
     }
+    span{
+      position: relative;
+      animation: bounce 0.7s ease infinite alternate;
+      top: 20px;
+
+    }
+    h1 span:nth-child(3){animation-delay: 0.1s;}
+    h1 span:nth-child(5){animation-delay: 0.2s;}
+    h1 span:nth-child(7){animation-delay: 0.3s;}
+
+
+    @keyframes bounce{
+      100%{
+        top: -20px;
+      }
+    }
 
     p {
       font-size: 1.2rem;

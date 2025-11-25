@@ -355,6 +355,25 @@ button {
   font-weight: 700;
   margin-bottom: 20px;
 }
+.hero__content span {
+  position: relative;
+  animation: bounce 0.7s ease infinite alternate;
+  top: 20px;
+}
+.hero__content h1 span:nth-child(3) {
+  animation-delay: 0.1s;
+}
+.hero__content h1 span:nth-child(5) {
+  animation-delay: 0.2s;
+}
+.hero__content h1 span:nth-child(7) {
+  animation-delay: 0.3s;
+}
+@keyframes bounce {
+  100% {
+    top: -20px;
+  }
+}
 .hero__content p {
   font-size: 1.2rem;
   line-height: 1.6;
@@ -621,7 +640,7 @@ button {
   gap: 48px;
 }
 .contact__left .highlight {
-  color: #61dbfb;
+  color: #e3fc24;
 }
 .contact__subtitle {
   font-size: 2.4rem;
