@@ -5,11 +5,15 @@
 }
 .container {
   max-width: 1440px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 20px;
-  width: 100%;
   box-sizing: border-box;
 //   border: 1px solid red;
+}
+body {
+  background: var(--bg);
+  color: #e7eefc;
 }
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,

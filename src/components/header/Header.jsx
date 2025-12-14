@@ -1,62 +1,63 @@
 import React, { useState } from "react";
 import logo from "../../assets/San_Dev.png";
 
-function Header({ title }) {
+function Header() {
   const [open, setOpen] = useState(false);
 
+  const menuItems = [
+    { id: "hero", label: "Hero" },
+    { id: "projects", label: "Projects" },
+    { id: "skills", label: "Skills" },
+    { id: "contact", label: "Contact" },
+  ];
+
   const handleScroll = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-      setOpen(false); // sidebarni yopib yuboradi
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      setOpen(false);
     }
   };
 
   return (
-    <div className="header">
+    <header className="header">
       <div className="container">
-        <div className="header__block">
-          <img className="header__logo" src={logo} alt="logo" />
-          <ul className="header__collection">
-            {title.map((item, index) => (
+        <div className="header__inner">
+          <img src={logo} alt="logo" className="header__logo" />
+
+          <ul className="header__menu">
+            {menuItems.map((item) => (
               <li
-                className="header__item"
-                key={index}
+                key={item.id}
                 onClick={() => handleScroll(item.id)}
+                className="header__menu-item"
               >
                 {item.label}
               </li>
             ))}
           </ul>
 
-          {!open && (
-            <button
-              className="header__burger"
-              onClick={() => setOpen(true)}
-              aria-label="Open menu"
-            >
-              <span />
-              <span />
-              <span />
-            </button>
-          )}
+          <button
+            className="header__burger"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </div>
 
-      {/* Sidebar */}
-      <div className={`header__sidebar${open ? " open" : ""}`}>
-        <button
-          className="header__close"
-          onClick={() => setOpen(false)}
-          aria-label="Close menu"
-        >
+      <div className={`sidebar ${open ? "open" : ""}`}>
+        <button className="sidebar__close" onClick={() => setOpen(false)}>
           &times;
         </button>
-        <ul>
-          {title.map((item, index) => (
+        <ul className="sidebar__menu">
+          {menuItems.map((item) => (
             <li
-              className="header__sidebar-item"
-              key={index}
+              key={item.id}
+              className="sidebar__item"
               onClick={() => handleScroll(item.id)}
             >
               {item.label}
@@ -65,10 +66,8 @@ function Header({ title }) {
         </ul>
       </div>
 
-      {open && (
-        <div className="header__overlay" onClick={() => setOpen(false)} />
-      )}
-    </div>
+      {open && <div className="overlay" onClick={() => setOpen(false)} />}
+    </header>
   );
 }
 

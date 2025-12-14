@@ -1,41 +1,46 @@
-import "./sass/main.css";
+import React from "react";
 import Header from "./components/header/Header";
-import Body from "./components/body/Body";
+import Hero from "./components/hero/Hero";
+import Projects from "./components/projects/Project";
+import Skills from "./components/skills/Skills";
+import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
-import {
-  FaTelegramPlane,
-  FaGithub,
-  FaInstagram,
-} from "react-icons/fa";
+
+import "./sass/main.scss";
 
 function App() {
+
+
+  const skills = [
+    // hardskills
+    { type: "hard", name: "Html" },
+    { type: "hard", name: "Css" },
+    { type: "hard", name: "SASS" },
+    { type: "hard", name: "Bootstrap" },
+    { type: "hard", name: "JavaScript" },
+    { type: "hard", name: "React" },
+    { type: "hard", name: "Tailwindcss" },
+    { type: "hard", name: "Webpack" },
+
+    // softskills
+    { type: "soft", name: "Teamwork" }, // Jamoada ishlash qobiliyati
+    { type: "soft", name: "Communication" }, // Ochiq va samarali muloqot
+    { type: "soft", name: "Problem Solving" }, // Muammolarni tez hal qilish
+    { type: "soft", name: "Creativity" }, // Ijodkorlik va yangi g‘oyalar
+    { type: "soft", name: "Networking" }, // Foydali aloqalar o‘rnatish
+    { type: "soft", name: "Eager to Learn" }, // Yangi narsalarni o‘rganishga qiziqish
+    { type: "soft", name: "Working with Community" }, // Hamjamiyat bilan ishlash
+    { type: "soft", name: "Self Motivation" }, // O‘z-o‘zini rag‘batlantirish
+  ];
+
   return (
     <>
-      <Header
-        title={[
-          { id: "hero", label: "Hero" },
-          { id: "works", label: "Works" },
-          { id: "hardskills", label: "Hardskills" },
-          { id: "softskills", label: "Softskills" },
-          { id: "contact", label: "Contact" },
-        ]}
-      />
-      <Body />
-      <Footer
-        logoText="San_Dev"
-        description="Frontend developer | Creative & Modern UI/UX. Building responsive and modern web applications."
-        socials={[
-          { icon: <FaTelegramPlane />, href: "https://t.me/Bek_8747_uzb" },
-          {
-            icon: <FaGithub />,
-            href: "https://github.com/Shonazarov-Sanjarbek",
-          },
-          {
-            icon: <FaInstagram />,
-            href: "https://www.instagram.com/sanjarbek_8747/",
-          },
-        ]}
-      />
+      <Header />
+      <Hero />
+      <Projects />
+      <Skills skills={skills} />
+      <Contact />
+      <Footer />
     </>
   );
 }

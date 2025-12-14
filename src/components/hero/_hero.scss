@@ -1,59 +1,184 @@
+/* Hero bo'limi */
 .hero {
-  width: 100%;
-  min-height: 80vh;
-  @include df();
-  text-align: center;
-  color: #fff;
-  position: relative;
-  padding: 60px 20px;
-  
+  padding: 80px 0 60px;
+  background: linear-gradient(180deg, #0b0b14 0%, #0f1020 100%);
 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  // overlay (qora shaffof fon)
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(10, 19, 60, 0.779); // yarim shaffof qora
-    z-index: 1;
+  &-grid {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 36px;
+    align-items: center;
   }
 
-  &__content {
-    max-width: 800px;
-    position: relative; // overlay ustiga chiqadi
-    z-index: 2;
+  /* Matn bo'limi */
+  .hero-left {
+    .eyebrow {
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
 
     h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-    span{
-      position: relative;
-      animation: bounce 0.7s ease infinite alternate;
-      top: 20px;
+      font-size: 2.6rem;
+      line-height: 1.02;
+      margin-bottom: 14px;
+      color: #fff;
 
-    }
-    h1 span:nth-child(3){animation-delay: 0.1s;}
-    h1 span:nth-child(5){animation-delay: 0.2s;}
-    h1 span:nth-child(7){animation-delay: 0.3s;}
-
-
-    @keyframes bounce{
-      100%{
-        top: -20px;
+      .accent {
+        color: var(--accent);
       }
     }
 
-    p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      opacity: 0.95;
+    .lead {
+      color: var(--muted);
+      margin-bottom: 20px;
+      max-width: 56ch;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+
+  /* Rasmlar bo'limi */
+  .hero-right {
+    .device-mockup {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      justify-content: center;
+
+      .screen {
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          clip-path: inset(10% 0 10% 0);
+        }
+      }
+
+      .screen-lg {
+        width: 360px;
+        height: 220px;
+        transform: rotate(-6deg);
+      }
+
+      .screen-sm {
+        width: 160px;
+        height: 320px;
+        transform: rotate(6deg);
+      }
+    }
+  }
+}
+
+/* Medium screens: 980px gacha */
+@media (max-width: 980px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .device-mockup {
+    order: -1; /* Rasmlar tepaga chiqadi */
+    margin-bottom: 18px;
+  }
+}
+
+/* Small screens: 570px gacha */
+@media (max-width: 570px) {
+  .hero {
+    padding: 50px 0 40px;
+
+    h1 {
+      font-size: 1.8rem;
+      line-height: 1.1;
+    }
+
+    .lead {
+      font-size: 0.95rem;
+      max-width: 100%;
+    }
+
+    .hero-ctas {
+      flex-direction: column;
+      gap: 10px;
+
+      a {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+      }
+    }
+
+    .hero-grid {
+      .hero-left {
+        order: 2; /* Matn pastga tushadi */
+      }
+
+      .hero-right {
+        order: 1; /* Rasmlar tepaga chiqadi */
+        justify-self: center;
+      }
+    }
+
+    .device-mockup {
+      gap: 8px;
+
+      .screen-lg {
+        width: 220px;
+        height: 140px;
+        transform: rotate(-3deg);
+      }
+
+      .screen-sm {
+        width: 100px;
+        height: 200px;
+        transform: rotate(3deg);
+      }
+    }
+  }
+}
+
+/* Extra small screens: 360px gacha */
+@media (max-width: 360px) {
+  .hero {
+    padding: 40px 0 30px;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    .lead {
+      font-size: 0.85rem;
+    }
+
+    .hero-ctas a {
+      font-size: 0.9rem;
+      padding: 8px 0;
+    }
+
+    .device-mockup {
+      .screen-lg {
+        width: 180px;
+        height: 120px;
+      }
+
+      .screen-sm {
+        width: 80px;
+        height: 160px;
+      }
     }
   }
 }

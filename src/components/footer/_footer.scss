@@ -1,66 +1,91 @@
-@import "../../sass/variable";
-
 .footer {
-    width: 100%;
-    background: rgba(42, 45, 189, 0.6352941176);
-    color: $light;
-    padding: 20px 0;
-    text-align: center;
-    
+  background: linear-gradient(
+    180deg,
+    rgba(15, 16, 32, 0.95),
+    rgba(15, 16, 32, 0.9)
+  );
+  padding: 40px 0 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--muted);
 
-    &__wrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap; // media uchun moslashuv
+  /* WRAPPER */
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* LEFT */
+  &__left {
+    max-width: 400px;
+  }
+
+  &__logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent-2);
+    margin-bottom: 12px;
+  }
+
+  &__desc {
+    line-height: 1.5;
+    font-size: 0.95rem;
+  }
+
+  /* RIGHT — ICONS */
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__social {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    color: var(--accent);
+    font-size: 18px;
+    text-decoration: none;
+
+    transition: all 0.25s ease;
+
+    &:hover {
+      background: var(--accent);
+      color: #051028;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 200, 255, 0.35);
     }
+  }
 
-    &__left {
-        max-width: 400px;
+  /* BOTTOM */
+  &__bottom {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0.85rem;
+    opacity: 0.7;
+  }
+}
 
-        .footer__logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: #00bcd4;
-            margin-bottom: 10px;
-        }
-
-        .footer__desc {
-            font-size: 15px;
-            line-height: 1.6;
-            opacity: 0.8;
-        }
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .footer {
+    &__wrapper {
+      flex-direction: column;
+      text-align: center;
     }
 
     &__right {
-        display: flex;
-        gap: 20px;
-
-        .footer__social {
-            font-size: 22px;
-            color: $light;
-            // transition: 0.3s ease;
-
-            &:hover {
-                color: #00bcd4;
-                transform: scale(1.2);
-            }
-        }
+      justify-content: center;
+      margin-top: 10px;
     }
-
-    &__bottom {
-        margin-top: 20px;
-        text-align: center;
-        font-size: 14px;
-        opacity: 0.7;
-    }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .footer__wrapper {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
+  }
 }

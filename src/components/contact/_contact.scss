@@ -1,140 +1,175 @@
-.contact {
-  @include df(space-between, center);
-  gap: 30px;
-  color: $light;
-  padding: 60px 20px;
-
-  @media (max-width: 992px) {
-    flex-direction: column;
-    align-items: center;
-
-    .contact__left {
-      width: 100%;
-      text-align: center;
-      gap: 24px;
-    }
-  }
-
-  &__left {
-    width: calc(50% - 15px);
-    @include dfc(none, center);
-    gap: 48px;
-
-    .highlight {
-      color: #e3fc24; // React cyan
-    }
-  }
-
-  &__subtitle {
-    font-size: 2.4rem;
-    font-weight: 600;
-    color: #cbd5e1;
-  }
-
-  &__title {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: #e0e0e0;
-  }
-
-  &__right {
-    @include df();
-  }
-
-  /* Contact card */
-  &__content {
-    background: rgba(30, 17, 96, 0.9); // fon bilan uyg‘un shaffof card
-    border-radius: 24px;
-    box-shadow: 0 8px 24px rgba(97, 219, 251, 0.25); // yumshoq cyan soyasi
-    padding: 40px 32px;
-    max-width: 400px;
-    width: 100%;
-    z-index: 2;
-    @include dfc(center, none);
-    gap: 32px;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: 0 12px 36px rgba(97, 219, 251, 0.35),
-                  0 4px 16px rgba(243, 156, 18, 0.25);
-    }
-  }
-
-  &__heading {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    @include df;
-    gap: 12px;
-
-    .text-gradient {
-      color: #61dbfb; // oddiy cyan
-    }
-
-    .icon {
-      font-size: 2rem;
-      color: #f39c12; // oltin aksent
-    }
-  }
-
-  &__mini-sub {
-    font-size: 1.1rem;
-    color: #e0e0e0;
-    margin-bottom: 10px;
-  }
-
-  &__links {
-    @include dfc(none, none);
-    gap: 18px;
-    width: 100%;
-  }
-
-  /* 🔘 Button */
-  &__btn {
-    @include df(flex-start, center);
-    gap: 10px;
-    padding: 14px 20px;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    background: #2a1f7a; // chuqur binafsha fon
-    color: $light;
-    text-decoration: none;
-    box-shadow: 0 3px 10px rgba(97, 219, 251, 0.2);
-    transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
-    cursor: pointer;
-
-    &:hover {
-      background: #61dbfb; // to‘liq cyan
-      color: #1e1160; // kontrast uchun asosiy fon
-      transform: translateY(-3px);
-      box-shadow: 0 6px 18px rgba(97, 219, 251, 0.45);
-    }
-  }
-
-  &__icon {
-    font-size: 1.5rem;
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 40px;
+  align-items: start;
+  margin: 40px 0;
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
   }
 }
 
-/* 📱 Responsiv */
-@media (max-width: 600px) {
-  .contact__content {
-    padding: 24px 10px;
-    max-width: 95vw;
-    gap: 20px;
+.contact-left {
+  max-width: 480px;
+  padding: 22px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  h2 {
+    margin-bottom: 6px;
+    color: var(--text);
+    font-size: 1.5rem;
   }
 
-  .contact__heading {
-    font-size: 1.5rem;
+  p {
+    margin-bottom: 20px;
+    color: var(--muted);
+  }
 
-    .icon {
-      font-size: 1.2rem;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    input, textarea {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-primary);
+      padding: 10px 14px;
+      border-radius: 10px;
+      transition: 0.25s;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.35);
+      }
+
+      &:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 6px rgba(0, 200, 255, 0.3);
+        outline: none;
+      }
     }
   }
 
-  .contact__btn {
-    font-size: 1rem;
-    padding: 10px 12px;
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.25s;
+      border: none;
+
+      &.primary {
+        background: var(--accent);
+        color: #fff;
+
+        &.disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+
+      &.outline {
+        background: transparent;
+        border: 1px solid var(--accent);
+        color: var(--accent);
+
+        &:hover {
+          background: var(--accent);
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.contact-right {
+  display: flex;
+  flex-direction: column; // ❗ ustma-ust
+  gap: 18px;
+  max-width: 360px;
+
+  @media (max-width: 900px) {
+    max-width: 100%;
+    margin-top: 24px;
+  }
+}
+
+/* CARD */
+.info-card {
+  padding: 18px 20px;
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  transition: 0.25s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-2px);
+  }
+}
+
+/* ICON + TITLE (pill) */
+.info-head {
+  display: inline-flex; // ❗ cho‘zilmaydi
+  align-items: center;
+  gap: 8px;
+
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+
+  width: fit-content;
+
+  .info-icon {
+    font-size: 16px;
+    color: var(--accent);
+  }
+}
+
+/* VALUE */
+.info-value {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1.5;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* SOCIAL ICONS */
+.info-socials {
+  display: flex;
+  gap: 14px;
+  margin-top: 4px;
+
+  .s-icon {
+    font-size: 20px;
+    color: var(--accent);
+    transition: 0.2s ease;
+
+    &:hover {
+      transform: scale(1.15);
+    }
   }
 }

@@ -3,16 +3,17 @@
 @import "./reset";
 
 @import "../components/header/header";
-@import "../components/body/body";
+
+@import "../components/hero/hero";
+@import "../components/projects/projects";
+@import "../components/skills/skills";
+@import "../components/contact/contact";
+
+@import "../components/button/button";
+
 @import "../components/footer/footer"; 
 
 
-@import "../components/hero/hero";
-@import "../components/works/works";
-@import "../components/hardskills/hardskills";
-@import "../components/softskills/softskills";
-@import "../components/contact/contact";
 
 
 
-@import "../components/button/button";

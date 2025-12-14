@@ -1,13 +1,27 @@
 import React from "react";
 
-function Button() {
-  const openTelegram = () => {
-    window.open("https://t.me/Bek_8747_uzb", "_blank");
-  };
+function Button({
+  children,
+  variant = "primary",
+  size = "md",
+  href,
+  onClick,
+  disabled,
+  className = "",
+  type = "button",
+}) {
+  const Tag = href ? "a" : "button";
+
   return (
-    <button onClick={openTelegram} className="button">
-      Bek_8747_uzb
-    </button>
+    <Tag
+      type={!href ? type : undefined}
+      className={`btn btn-${variant} btn-${size} ${className}`}
+      href={href}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {children}
+    </Tag>
   );
 }
 

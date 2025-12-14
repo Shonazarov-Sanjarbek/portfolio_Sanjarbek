@@ -1,187 +1,128 @@
 .header {
-    width: 100%;
-    background: $second-back; // Lighter, semi-transparent
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: linear-gradient(180deg, rgba(15, 16, 32, 0.9), rgba(15, 16, 32, 0.8));
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+  }
+
+  &__logo {
+    width: 140px;
+    object-fit: contain;
+  }
+
+  &__menu {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+
+    &-item {
+      color: var(--muted);
+      font-weight: 600;
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 8px;
+      transition: all 0.2s;
+
+      &:hover {
+        color: var(--accent-2);
+        background: rgba(var(--accent-2-rgb), 0.05);
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  &__burger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 20px;
+    span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--muted);
+      border-radius: 2px;
+    }
+  }
+
+  .sidebar {
     position: fixed;
     top: 0;
-    left: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    backdrop-filter: blur(6px);
+    // border: 1px solid red;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: var(--panel);
+    padding: 20px;
+    transition: 0.3s ease;
+    z-index: 60;
+    display: none;
+    flex-direction: column;
 
-    &__block {
-        width: 100%;
-        height: 80px;
-        @include df(space-between, center);
+    &.open {
+      // border: 1px solid red;
+      display: flex;
+      right: 0;
     }
 
-    &__logo {
-        width: 160px; // Default: katta ekranlarda kattaroq
-        max-width: 100%;
-        height: auto;
-        object-fit: contain;
-        display: block;
-        transition: width 0.3s;
+    &__close {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: var(--muted);
+      cursor: pointer;
     }
 
-    &__collection {
-        width: 50%;
-        @include df(end, center);
-        gap: 60px;
-        color: $text;
-    }
+    &__menu {
+      list-style: none;
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
 
-    &__item {
-        position: relative;
-        display: inline-block;
-        font-size: 18px;
-        font-weight: 700;
-        text-decoration: none;
-        transition: color 0.3s;
-
-        &::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -4px;
-            width: 100%;
-            height: 2px;
-            background: $light;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s;
-        }
-
-        &:hover {
-            color: $light;
-            cursor: pointer;
-
-            &::after {
-                transform: scaleX(1);
-            }
-        }
-    }
-
-    @media (max-width: 1200px) {
-
-        &__logo {
-            width: 130px;
-        }
-
-        &__collection {
-            gap: 40px;
-        }
-
-        &__item {
-            font-size: 16px;
-            font-weight: 600;
-        }
-    }
-
-    @media (max-width: 992px) {
-        &__logo {
-            width: 110px;
-        }
-
-        &__collection {
-            gap: 25px;
-            width: auto;
-        }
-
-        &__item {
-            font-size: 16px;
-        }
-    }
-
-    @media (max-width: 768px) {
-        &__collection {
-            display: none;
-        }
-
-    }
-    &__burger {
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        gap: 5px;
-        width: 32px;
-        height: 32px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        z-index: 1002;
-    
-        span {
-            display: block;
-            height: 3px;
-            width: 80%;
-            background: $light;
-            border-radius: 2px;
-            transition: 0.3s;
-        }
-    }
-    &__sidebar {
-        position: fixed;
-        top: 0;
-        right: -300px;
-        width: 260px;
-        height: 100vh;
-        background: $second-back;
-        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
-        transition: right 0.3s;
-        z-index: 1001;
-        padding: 32px 24px 24px;
-        display: flex;
-        flex-direction: column;
-    
-        &.open {
-            right: 0;
-        }
-    
-        ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-    }
-    &__sidebar-item {
-        color: $light;
-        font-size: 18px;
+      & .sidebar__item {
+        color: var(--muted);
         font-weight: 600;
         cursor: pointer;
+
+        &:hover {
+          color: var(--accent-2);
+        }
+      }
     }
-    &__close {
-        background: none;
-        border: none;
-        font-size: 32px;
-        color: $light;
-        align-self: flex-end;
-        margin-bottom: 24px;
-        cursor: pointer;
-    }
-    &__overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.4);
-        z-index: 1000;
-    }
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 55;
+  }
 }
 
+@media (max-width: 980px) {
+  .header__menu {
+    display: none;
+  }
 
+  .header__burger {
+    display: flex;
+    padding: 0;
+  }
 
-@media (max-width: 768px) {
-    .header__collection {
-        display: none;
-    }
-
-    .header__burger {
-        display: flex;
-    }
-}
-
-/* Burger faqat sidebar yopiq bo‘lsa ko‘rinadi */
-.header__sidebar.open~.header__burger {
-    display: none !important;
+  .sidebar{
+    display: flex;
+  }
 }
