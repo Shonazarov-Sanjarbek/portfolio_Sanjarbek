@@ -8,7 +8,7 @@ import {
   FaEnvelope,
 } from "react-icons/fa";
 import Button from "../button/Button";
-import { sendTelegramMessage } from "../../api/sendTelegram"; // Telegram logikasi
+import { sendTelegramMessage } from "../../api/sendTelegram";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -21,14 +21,33 @@ function Contact() {
   const [isValid, setIsValid] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  // ====== FAQAT KERAKLI NAZORAT ======
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    // Telefon: faqat raqam
+    if (name === "phone" && !/^[0-9]*$/.test(value)) return;
+
+    // Telegram: @ bilan boshlanishi, faqat harf/raqam/_
+    if (name === "telegram" && !/^@?[a-zA-Z0-9_]*$/.test(value)) return;
+
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // ====== VALIDATION ======
   useEffect(() => {
-    const allFilled = Object.values(formData).every((v) => v.trim() !== "");
-    setIsValid(allFilled);
+    const { name, phone, telegram, message } = formData;
+
+    const allFilled =
+      name.trim() &&
+      phone.trim() &&
+      telegram.trim() &&
+      message.trim();
+
+    const phoneValid = /^[0-9]+$/.test(phone);
+    const telegramValid = /^@[a-zA-Z0-9_]{5,32}$/.test(telegram);
+
+    setIsValid(allFilled && phoneValid && telegramValid);
   }, [formData]);
 
   const handleSubmit = async (e) => {
@@ -54,7 +73,6 @@ function Contact() {
   return (
     <div id="contact" className="container">
       <div className="contact-grid">
-        {/* FORM */}
         <div className="contact-left">
           <h2>Savol va takliflaringizni qoldiring.</h2>
 
@@ -78,7 +96,7 @@ function Contact() {
             <input
               type="text"
               name="telegram"
-              placeholder="Telegram username"
+              placeholder="Telegram username (@username)"
               value={formData.telegram}
               onChange={handleChange}
             />
@@ -114,7 +132,7 @@ function Contact() {
           </form>
         </div>
 
-        {/* SOCIAL (ONG TOMON) */}
+        {/* O‘NG TOMON O‘ZGARMADI */}
         <div className="contact-right">
           <div className="info-card">
             <div className="info-head">

@@ -8,25 +8,25 @@ import magazin from "../../assets/internet magazin.png"
 const projects = [
   {
     title: "Aurum Avia",
-    description: "Airline website UI & booking flow",
+    description: "Airline website for the user",
     href: "https://aurum-avia.uz",
     image: aurum,
   },
   {
     title: "Dice Game",
-    description: "Interactive game built with JS and animations",
+    description: "A creative game built in js with no responsive",
     href: "https://dicegame-sanjarbek.vercel.app/",
     image: game,
   },
   {
-    title: "Webpack Demo",
-    description: "Modern build setup & optimization",
+    title: "Webpack",
+    description: "A site that provides information about countries created in webpack",
     href: "https://webpack-sanjarbek.vercel.app/",
     image: webpack,
   },
   {
     title: "Ecommerce",
-    description: "Small online shop UI & cart flows",
+    description: "Complex logic for a small online store",
     href: "https://internet-magazin-pi.vercel.app/",
     image: magazin,
   },
