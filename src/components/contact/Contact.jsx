@@ -45,7 +45,7 @@ function Contact() {
       message.trim();
 
     const phoneValid = /^[0-9]+$/.test(phone);
-    const telegramValid = /^@[a-zA-Z0-9_]{5,32}$/.test(telegram);
+    const telegramValid = /^@[a-zA-Z0-9_]{3,32}$/.test(telegram);
 
     setIsValid(allFilled && phoneValid && telegramValid);
   }, [formData]);
