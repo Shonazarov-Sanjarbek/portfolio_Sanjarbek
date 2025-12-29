@@ -34,14 +34,14 @@ function App() {
   ];
 
   return (
-    <>
+    <div>
       <Header />
       <Hero />
       <Projects />
       <Skills skills={skills} />
       <Contact />
       <Footer />
-    </>
+    </div>
   );
 }
 
