@@ -1,3 +1,9 @@
+node_modules/
+.env
+dist/
+/.vite
+.idea/
+*.log
 # Logs
 logs
 *.log
