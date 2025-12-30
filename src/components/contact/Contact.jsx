@@ -39,10 +39,7 @@ function Contact() {
     const { name, phone, telegram, message } = formData;
 
     const allFilled =
-      name.trim() &&
-      phone.trim() &&
-      telegram.trim() &&
-      message.trim();
+      name.trim() && phone.trim() && telegram.trim() && message.trim();
 
     const phoneValid = /^[0-9]+$/.test(phone);
     const telegramValid = /^@[a-zA-Z0-9_]{3,32}$/.test(telegram);

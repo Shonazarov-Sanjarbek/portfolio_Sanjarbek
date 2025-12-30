@@ -1,35 +1,26 @@
 export const sendTelegramMessage = async ({ name, phone, telegram, message }) => {
-  if (!name?.trim() || !phone?.trim() || !telegram?.trim() || !message?.trim()) {
-    throw new Error("Barcha maydonlar to‘ldirilishi kerak!");
-  }
+  // Agar foydalanuvchi @ yozmasa, avtomatik qo'shamiz
+  const normalizedTelegram = telegram?.startsWith("@") ? telegram : `@${telegram}`;
 
-  if (!/^[0-9]+$/.test(phone)) throw new Error("Telefon raqam faqat raqamlardan iborat bo‘lishi kerak!");
-  if (!/^@[a-zA-Z0-9_]{3,32}$/.test(telegram)) throw new Error("Telegram username noto‘g‘ri! (@username ko‘rinishida bo‘lishi kerak)");
+  // Vite uchun baza URL: devda proxy ishlasa bo'sh, aks holda to'liq URL berishingiz mumkin
+  const base = import.meta.env.VITE_API_BASE || "";
 
-  const BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN; // .env faylda bo‘lsin
-  const CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID;
-
-  const text = `📩 Yangi xabar:
-👤 ${name}
-📞 ${phone}
-✈️ ${telegram}
-
-💬 ${message}`;
-
+  const res = await fetch(`${base}/api/send-message`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, phone, telegram: normalizedTelegram, message }),
+  });
+  // Bir marta body o'qib, keyin JSON parse qilish (ikki marta o'qishni oldini oladi)
+  const raw = await res.text();
+  let data;
   try {
-    const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id: CHAT_ID, text }),
-    });
-
-    if (!res.ok) {
-      const data = await res.json().catch(() => null);
-      throw new Error(data?.description || "Telegramga yuborilmadi");
-    }
-
+    data = raw ? JSON.parse(raw) : {};
   } catch (err) {
-    console.error(err);
-    throw new Error("Telegramga yuborishda xato yuz berdi");
+    // JSON parse bo'lmasa, raw matnni xato sifatida qaytaramiz
+    throw new Error(`Serverdan noto‘g‘ri javob keldi (${res.status}): ${raw || err.message}`);
   }
+
+  if (!res.ok) throw new Error(data.error || `Xatolik yuz berdi (${res.status})`);
+
+  return data;
 };
