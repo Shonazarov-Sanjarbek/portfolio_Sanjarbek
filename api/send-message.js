@@ -6,9 +6,15 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Barcha maydonlar to'ldirilishi kerak" });
   }
 
-  const botToken = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
+  const botToken = process.env.TELEGRAM_BOT_TOKEN || process.env.VITE_TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID || process.env.VITE_TELEGRAM_CHAT_ID;
   if (!botToken || !chatId) {
+    console.error('Vercel function: Telegram sozlamalari topilmadi. env keys present:', {
+      TELEGRAM_BOT_TOKEN: !!process.env.TELEGRAM_BOT_TOKEN,
+      VITE_TELEGRAM_BOT_TOKEN: !!process.env.VITE_TELEGRAM_BOT_TOKEN,
+      TELEGRAM_CHAT_ID: !!process.env.TELEGRAM_CHAT_ID,
+      VITE_TELEGRAM_CHAT_ID: !!process.env.VITE_TELEGRAM_CHAT_ID,
+    });
     return res.status(500).json({ error: 'Serverda Telegram sozlamalari yo‘q' });
   }
 

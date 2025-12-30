@@ -27,12 +27,25 @@ app.post("/api/send-message", async (req, res) => {
 ${message}`;
 
   try {
+    const botToken = process.env.TELEGRAM_BOT_TOKEN || process.env.VITE_TELEGRAM_BOT_TOKEN;
+    const chatId = process.env.TELEGRAM_CHAT_ID || process.env.VITE_TELEGRAM_CHAT_ID;
+
+    if (!botToken || !chatId) {
+      console.error('Telegram sozlamalari topilmadi. process.env:', {
+        TELEGRAM_BOT_TOKEN: !!process.env.TELEGRAM_BOT_TOKEN,
+        VITE_TELEGRAM_BOT_TOKEN: !!process.env.VITE_TELEGRAM_BOT_TOKEN,
+        TELEGRAM_CHAT_ID: !!process.env.TELEGRAM_CHAT_ID,
+        VITE_TELEGRAM_CHAT_ID: !!process.env.VITE_TELEGRAM_CHAT_ID,
+      });
+      return res.status(500).json({ error: "Serverda Telegram sozlamalari yo‘q" });
+    }
+
     const telegramRes = await fetch(
-      `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`,
+      `https://api.telegram.org/bot${botToken}/sendMessage`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chat_id: process.env.TELEGRAM_CHAT_ID, text }),
+        body: JSON.stringify({ chat_id: chatId, text }),
       }
     );
 
